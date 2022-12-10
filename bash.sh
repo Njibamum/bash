@@ -12,3 +12,4 @@ function copyFiles() {
 array=("http://yahoo.com/" "aws.amazon.com" "tiktok.com") 
 
 copyFiles "${array[@]}"
+#method with Sed
