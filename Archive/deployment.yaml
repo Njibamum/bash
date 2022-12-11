@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: case-study
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: case-study
+  template:
+    metadata:
+      labels:
+        app: case-study
+    spec:
+      containers:
+        - name: case-study
+          image: betrand/case_study
+          #command:
+          #  - python
+          #  - -m
+          #  - http.server
+          ports:
+            - containerPort: 8080
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: case-study
+spec:
+  selector:
+    app: case-study
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: NodePort
