@@ -1,0 +1,15 @@
+stages:
+    - build
+    - deploy
+build:
+   stage: build
+   script:
+          brew install node
+          npm install express
+
+deploy:
+  stage: deploy
+  script:
+         install nodejs
+         node index.js
+  
